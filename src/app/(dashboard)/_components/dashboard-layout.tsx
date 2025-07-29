@@ -189,10 +189,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       >
         <Collapsible.Content forceMount>
           <div
-            className={`bg-background fixed top-0 left-0 h-screen w-64 border p-4 transition-transform duration-300 ${open ? "translate-x-0" : "-translate-x-full"}`}
+            className={`bg-background fixed top-0 left-0 h-screen w-64 border pt-0.5 transition-transform duration-300 ${open ? "translate-x-0" : "-translate-x-full"}`}
           >
             <div className="flex items-center justify-between">
-              <h1 className="font-semibold">Dashboard</h1>
+              <h1 className="ml-5 font-semibold">Dashboard</h1>
               <Collapsible.Trigger asChild>
                 <Button size="icon" variant="outline">
                   <ChevronLeft />

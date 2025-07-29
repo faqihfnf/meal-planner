@@ -1,5 +1,6 @@
 "use client";
 
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -129,54 +130,58 @@ type DashboardLayoutProps = {
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="bg-background fixed z-10 flex h-12 w-screen items-center justify-between border px-2">
-      <Collapsible.Root className="h-full" open={open} onOpenChange={setOpen}>
-        <Collapsible.Trigger className="m-2" asChild>
-          <Button size="icon" variant="outline">
-            <Menu />
-          </Button>
-        </Collapsible.Trigger>
-      </Collapsible.Root>
-      <div className="flex">
-        {/* Theme Toggle */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              size="icon"
-              variant="outline"
-              className="flex h-10 items-center gap-3 px-2"
-            >
-              <Avatar className="size-8">
-                <AvatarFallback>A</AvatarFallback>
-              </Avatar>
-              <span className="hidden font-semibold md:inline">Admin</span>
+    <div className="flex">
+      <div className="bg-background fixed z-10 flex h-12 w-screen items-center justify-between border px-2">
+        <Collapsible.Root className="h-full" open={open} onOpenChange={setOpen}>
+          <Collapsible.Trigger className="m-1" asChild>
+            <Button size="icon" variant="outline">
+              <Menu />
             </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <div className="flex items-center gap-3 px-2 py-1.5">
-              <Avatar className="size-10">
-                <AvatarFallback>A</AvatarFallback>
-              </Avatar>
-              <div className="">
-                <p className="text-sm font-medium">Admin</p>
-                <p className="text-muted-foreground text-xs">admin@test.com</p>
+          </Collapsible.Trigger>
+        </Collapsible.Root>
+        <div className="flex">
+          {/* Theme Toggle */}
+          <ThemeToggle />
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="ghost"
+                className="flex h-9 items-center gap-2 px-2"
+              >
+                <Avatar className="size-9">
+                  <AvatarFallback>A</AvatarFallback>
+                </Avatar>
+                <span className="hidden md:inline">Admin</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <div className="flex items-center gap-3 px-2 py-1.5">
+                <Avatar className="size-10">
+                  <AvatarFallback>A</AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="text-sm font-medium">admin</p>
+                  <p className="text-muted-foreground text-xs">
+                    admin@test.com
+                  </p>
+                </div>
               </div>
-            </div>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={() => {
-                //# TODO: logout user
-              }}
-              variant="destructive"
-            >
-              <LogOut className="mr-2 size-4" />
-              <span>Log out</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                onClick={() => {
+                  //# sTODO : logout
+                }}
+                variant="destructive"
+              >
+                <LogOut className="size-4" /> Logout
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
+
       <Collapsible.Root
         open={open}
         onOpenChange={setOpen}

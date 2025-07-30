@@ -3,6 +3,7 @@
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "./ui/sonner";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ const Providers = ({ children }: ProvidersProps) => {
         enableSystem
         disableTransitionOnChange
       >
+        <Toaster />
         {children}
       </NextThemesProvider>
     </QueryClientProvider>

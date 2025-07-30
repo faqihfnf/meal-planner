@@ -1,7 +1,8 @@
 import React from "react";
+import { CategoryCards } from "./_components/category-cards";
 
 const page = () => {
-  return <div>Admin Page</div>;
+  return <CategoryCards />;
 };
 
 export default page;

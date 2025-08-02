@@ -1,8 +1,9 @@
-"use client"
+"use client";
 import { Button } from "@/components/ui/button";
 import { useDeleteCategory } from "../_services/use-category-mutations";
 import { useCategories } from "../_services/use-category-queries";
 import { Edit, Trash } from "lucide-react";
+import { alert } from "@/lib/use-global-store";
 
 const CategoryCards = () => {
   const categoriesQuery = useCategories();
@@ -23,7 +24,11 @@ const CategoryCards = () => {
             <Button
               className="size-6"
               variant={"ghost"}
-              onClick={() => deleteCategoryMutations.mutate(item.id)}
+              onClick={() =>
+                alert({
+                  onConfirm: () => deleteCategoryMutations.mutate(item.id),
+                })
+              }
             >
               <Trash />
             </Button>
